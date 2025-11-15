@@ -11,13 +11,13 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12.2'
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
@@ -28,8 +28,8 @@ jobs:
         run: |
           python setup.py build
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
         with:
           name: windows-exe-build
-          path: build/exe.win-*/
+          path: build/exe.win-*/   # Adjust this path if needed
